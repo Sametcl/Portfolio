@@ -1,0 +1,37 @@
+﻿@model List<StellerPortfolio.Models.TblMessage>
+@{
+    ViewBag.Title = "ReadMessages";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var count = 0;
+}
+
+<h2>Okunan Mesajlar</h2>
+<br />
+<a class=" btn btn-outline-dark" href="/Message/Index">Okunmayan Mesajlar</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Gönderen Ad Soyad</th>
+        <th>Gönderen Mail</th>
+        <th>Sil</th>
+        <th>Mesajı Aç </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.NameSurname</td>
+            <td>@item.Email</td>
+            <td><a href="/Message/DeleteMessage/@item.MessageId" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Message/MessageDetails/@item.MessageId" class="btn btn-outline-primary">Mesajı Aç</a></td>
+
+        </tr>
+
+
+    }
+
+</table>
+

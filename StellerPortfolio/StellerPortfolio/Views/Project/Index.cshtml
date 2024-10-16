@@ -1,0 +1,40 @@
+﻿@model List<StellerPortfolio.Models.TblProject>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h3>Projelerim Sayfası</h3>
+
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Resim</th>
+        <th>Proje Adı</th>
+        <th>Açıklama</th>
+        <th>Github Url</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td><img src="@item.ImageUrl" style="height:50px;width:50px" /> </td>
+            <td>@item.Title </td>
+            <td>@item.Description </td>
+            <td>@item.GithubUrl </td>
+            <td><a href="/Project/DeleteProject/@item.ProjectId" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Project/UpdateProject/@item.ProjectId" class="btn btn-outline-info">Güncelle</a></td>
+            
+        </tr>
+    }
+</table>
+
+<br />
+<a href="/Project/AddProject" class="btn btn-outline-primary">Yeni Proje Ekle</a>
